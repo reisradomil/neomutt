@@ -256,10 +256,8 @@ int imap_read_literal(FILE *fp, struct ImapData *idata, long bytes, struct Progr
 
     if (pbar && !(pos % 1024))
       mutt_progress_update(pbar, pos, -1);
-#ifdef DEBUG
     if (debuglevel >= IMAP_LOG_LTRL)
       fputc(c, debugfile);
-#endif
   }
 
   return 0;
@@ -782,7 +780,6 @@ static int imap_open_mailbox(struct Context *ctx)
     ctx->readonly = true;
   }
 
-#ifdef DEBUG
   /* dump the mailbox flags we've found */
   if (debuglevel > 2)
   {
@@ -802,7 +799,6 @@ static int imap_open_mailbox(struct Context *ctx)
       FREE(&flag_buffer.data);
     }
   }
-#endif
 
   if (!(mutt_bit_isset(idata->ctx->rights, MUTT_ACL_DELETE) ||
         mutt_bit_isset(idata->ctx->rights, MUTT_ACL_SEEN) ||
