@@ -162,7 +162,7 @@ static int dup_hash_dec(struct Hash *dup_hash, char *s)
   count = (uintptr_t) elem->data;
   if (count <= 1)
   {
-    hash_delete(dup_hash, s, NULL, NULL);
+    hash_delete(dup_hash, s, NULL);
     return 0;
   }
 
@@ -284,7 +284,7 @@ cleanup:
   }
   if (HistoryRemoveDups)
     for (hclass = 0; hclass < HC_LAST; hclass++)
-      hash_destroy(&dup_hashes[hclass], NULL);
+      hash_destroy(&dup_hashes[hclass]);
 }
 
 static void save_history(enum HistoryClass hclass, const char *s)
