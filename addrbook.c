@@ -25,6 +25,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "lib/lib.h"
+#include "config/sort.h"
 #include "mutt.h"
 #include "address.h"
 #include "alias.h"

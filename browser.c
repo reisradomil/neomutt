@@ -40,6 +40,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "lib/lib.h"
+#include "config/sort.h"
 #include "conn/conn.h"
 #include "mutt.h"
 #include "attach.h"

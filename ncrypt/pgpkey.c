@@ -33,6 +33,7 @@
 #include <time.h>
 #include <unistd.h>
 #include "lib/lib.h"
+#include "config/sort.h"
 #include "mutt.h"
 #include "pgpkey.h"
 #include "address.h"

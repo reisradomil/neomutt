@@ -38,6 +38,8 @@
 #include <wchar.h>
 #include "lib/lib.h"
 #include "config/mbtable.h"
+#include "config/sort.h"
+#include "config/types.h"
 #include "mutt.h"
 #include "init.h"
 #include "address.h"

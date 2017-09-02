@@ -32,6 +32,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lib/lib.h"
+#include "config/sort.h"
 #include "conn/conn.h"
 #include "mutt.h"
 #include "alias.h"
