@@ -24,21 +24,9 @@
 #define _CONFIG_ADDRESS_H
 
 #include <stdbool.h>
+#include "lib/address.h"
 
 struct ConfigSet;
-
-/**
- * struct Address - An email address
- */
-struct Address
-{
-  char *personal; /**< real name of address */
-  char *mailbox;  /**< mailbox and host address */
-  int group;      /**< group mailbox? */
-  struct Address *next;
-  bool is_intl : 1;
-  bool intl_checked : 1;
-};
 
 void address_init(struct ConfigSet *cs);
 struct Address *address_create(const char *addr);

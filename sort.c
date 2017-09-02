@@ -24,10 +24,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "lib/lib.h"
+#include "config/address.h"
 #include "config/sort.h"
 #include "mutt.h"
 #include "sort.h"
-#include "address.h"
 #include "body.h"
 #include "context.h"
 #include "envelope.h"

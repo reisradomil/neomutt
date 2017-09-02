@@ -26,8 +26,8 @@
 
 #include <stddef.h>
 #include <stdbool.h>
-#include "address.h"
 #include "lib/lib.h"
+#include "config/lib.h"
 
 int rfc822_write_address(char *buf, size_t buflen, struct Address *addr, int display);
 void rfc822_write_address_single(char *buf, size_t buflen, struct Address *addr, int display);
