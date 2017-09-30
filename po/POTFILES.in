@@ -18,7 +18,6 @@ ncrypt/cryptglue.c
 ncrypt/crypt_mod.c
 curs_lib.c
 curs_main.c
-doc/makedoc.c
 edit.c
 editmsg.c
 enter.c

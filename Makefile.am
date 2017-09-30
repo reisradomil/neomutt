@@ -22,14 +22,10 @@ AM_DISTCHECK_CONFIGURE_FLAGS = \
 	--with-sasl \
 	--with-tokyocabinet
 
-SUBDIRS = m4 contrib imap ncrypt lib
+SUBDIRS = m4 imap ncrypt lib
 
 if BUILD_HCACHE
 SUBDIRS += hcache
-endif
-
-if BUILD_DOC
-SUBDIRS += doc
 endif
 
 if BUILD_PO
@@ -158,6 +154,6 @@ distclean-local:
 	rm -fr html
 
 html:
-	doxygen doxygen/doxygen.conf
+	doxygen misc/doxygen.conf
 
 .PHONY: html
