@@ -381,7 +381,7 @@ int pop_authenticate(struct PopData *pop_data)
           if (ret != POP_A_UNAVAIL)
             attempts++;
           if (ret == POP_A_SUCCESS || ret == POP_A_SOCKET ||
-              (ret == POP_A_FAILURE && !OPT_POP_AUTH_TRY_ALL))
+              (ret == POP_A_FAILURE && !PopAuthTryAll))
           {
             comma = NULL;
             break;
@@ -418,8 +418,7 @@ int pop_authenticate(struct PopData *pop_data)
 
       if (ret != POP_A_UNAVAIL)
         attempts++;
-      if (ret == POP_A_SUCCESS || ret == POP_A_SOCKET ||
-          (ret == POP_A_FAILURE && !OPT_POP_AUTH_TRY_ALL))
+      if (ret == POP_A_SUCCESS || ret == POP_A_SOCKET || (ret == POP_A_FAILURE && !PopAuthTryAll))
         break;
 
       authenticator++;
