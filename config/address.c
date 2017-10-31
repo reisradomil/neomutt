@@ -93,6 +93,7 @@ static int address_string_set(const struct ConfigSet *cs, void *var,
     addr = safe_calloc(1, sizeof(*addr));
     addr->personal = safe_strdup((const char *) value);
     addr->mailbox = safe_strdup("dummy1");
+    //QWQ rfc822_parse_adrlist(NULL, p);
   }
 
   if (cdef->validator)
