@@ -209,11 +209,11 @@ static struct Address *find_mailing_lists(struct Address *t, struct Address *c)
       {
         if (top)
         {
-          ptr->next = rfc822_cpy_adr_real(t);
+          ptr->next = rfc822_cpy_adr(t);
           ptr = ptr->next;
         }
         else
-          ptr = top = rfc822_cpy_adr_real(t);
+          ptr = top = rfc822_cpy_adr(t);
       }
     }
   }
@@ -996,9 +996,9 @@ void mutt_set_followup_to(struct Envelope *e)
     if (e->mail_followup_to && !mutt_is_list_recipient(0, e->to, e->cc))
     {
       if (e->reply_to)
-        from = rfc822_cpy_adr(e->reply_to, 0);
+        from = rfc822_cpy_adrlist(e->reply_to, 0);
       else if (e->from)
-        from = rfc822_cpy_adr(e->from, 0);
+        from = rfc822_cpy_adrlist(e->from, 0);
       else
         from = mutt_default_from();
 
@@ -1045,7 +1045,7 @@ static struct Address *set_reverse_name(struct Envelope *env)
     tmp = env->from;
   if (tmp)
   {
-    tmp = rfc822_cpy_adr_real(tmp);
+    tmp = rfc822_cpy_adr(tmp);
     /* when $reverse_realname is not set, clear the personal name so that it
      * may be set vi a reply- or send-hook.
      */
@@ -1066,7 +1066,7 @@ struct Address *mutt_default_from(void)
    */
 
   if (From)
-    adr = rfc822_cpy_adr_real(From);
+    adr = rfc822_cpy_adr(From);
   else if (option(OPT_USE_DOMAIN))
   {
     adr = rfc822_new_address();
@@ -1210,7 +1210,7 @@ int mutt_compose_to_sender(struct Header *hdr)
     }
   }
   else
-    msg->env->to = rfc822_cpy_adr(hdr->env->from, 0);
+    msg->env->to = rfc822_cpy_adrlist(hdr->env->from, 0);
 
   return ci_send_message(0, msg, NULL, NULL, NULL);
 }

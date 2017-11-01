@@ -23,19 +23,4 @@
 #ifndef _MUTT_ADDRESS_H
 #define _MUTT_ADDRESS_H
 
-#include <stdbool.h>
-
-/**
- * struct Address - An email address
- */
-struct Address
-{
-  char *personal; /**< real name of address */
-  char *mailbox;  /**< mailbox and host address */
-  int group;      /**< group mailbox? */
-  struct Address *next;
-  bool is_intl : 1;
-  bool intl_checked : 1;
-};
-
 #endif /* _MUTT_ADDRESS_H */

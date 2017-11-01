@@ -1297,31 +1297,6 @@ struct Envelope *mutt_read_rfc822_header(FILE *f, struct Header *hdr,
   return e;
 }
 
-struct Address *mutt_parse_adrlist(struct Address *p, const char *s)
-{
-  const char *q = NULL;
-
-  /* check for a simple whitespace separated list of addresses */
-  q = strpbrk(s, "\"<>():;,\\");
-  if (!q)
-  {
-    char tmp[HUGE_STRING];
-    char *r = NULL;
-
-    strfcpy(tmp, s, sizeof(tmp));
-    r = tmp;
-    while ((r = strtok(r, " \t")) != NULL)
-    {
-      p = rfc822_parse_adrlist(p, r);
-      r = NULL;
-    }
-  }
-  else
-    p = rfc822_parse_adrlist(p, s);
-
-  return p;
-}
-
 /**
  * count_body_parts_check - Compares mime types to the ok and except lists
  */

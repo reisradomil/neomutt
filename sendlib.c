@@ -83,8 +83,6 @@
 #include <assert.h>
 #endif
 
-extern char RFC822Specials[];
-
 const char MimeSpecials[] = "@.,;:<>[]\\\"()?/= \t";
 
 static void encode_quoted(FGETCONV *fc, FILE *fout, int istext)
@@ -2856,7 +2854,7 @@ int mutt_bounce_message(FILE *fp, struct Header *h, struct Address *to)
    * function is called, since the user receives confirmation of the address
    * list being bounced to.
    */
-  resent_to = rfc822_cpy_adr(to, 0);
+  resent_to = rfc822_cpy_adrlist(to, 0);
   rfc2047_encode_adrlist(resent_to, "Resent-To");
 
   ret = bounce_message(fp, h, resent_to, resent_from, from);
