@@ -24,5 +24,6 @@
 #define _LIB_MBYTE_H
 
 int mutt_charlen(const char *s, int *width);
+bool get_initials(const char *name, char *buf, int buflen);
 
 #endif /* _LIB_MBYTE_H */
