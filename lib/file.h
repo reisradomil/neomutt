@@ -59,5 +59,6 @@ int         safe_fsync_close(FILE **f);
 int         safe_open(const char *path, int flags);
 int         safe_rename(const char *src, const char *target);
 int         safe_symlink(const char *oldpath, const char *newpath);
+int         to_absolute_path(char *path, const char *reference);
 
 #endif /* _LIB_FILE_H */
