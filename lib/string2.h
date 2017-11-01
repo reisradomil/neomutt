@@ -28,6 +28,7 @@
 #define _LIB_STRING_H
 
 #include <ctype.h>
+#include <stdbool.h>
 #include <stdio.h>
 
 #define SHORT_STRING 128
@@ -57,6 +58,7 @@
 #define terminate_buffer(a, b) terminate_string(a, b, sizeof(a) - 1)
 
 int         imap_wordcasecmp(const char *a, const char *b);
+bool        is_ascii(const char *p, size_t len);
 int         is_email_wsp(char c);
 size_t      lwslen(const char *s, size_t n);
 size_t      lwsrlen(const char *s, size_t n);

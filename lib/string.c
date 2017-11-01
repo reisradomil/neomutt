@@ -745,3 +745,15 @@ int imap_wordcasecmp(const char *a, const char *b)
 
   return mutt_strcasecmp(a, tmp);
 }
+
+bool is_ascii(const char *p, size_t len)
+{
+  const char *s = p;
+  while (s && (unsigned int) (s - p) < len)
+  {
+    if ((*s & 0x80) != 0)
+      return false;
+    s++;
+  }
+  return true;
+}
