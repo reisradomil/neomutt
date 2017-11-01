@@ -1204,3 +1204,35 @@ int to_absolute_path(char *path, const char *reference)
 
   return true;
 }
+
+/**
+ * file_read_keyword - XXX
+ * @param file   YYY
+ * @param buffer YYY
+ * @param buflen YYY
+ */
+char *file_read_keyword(const char *file, char *buffer, size_t buflen)
+{
+  FILE *fp = NULL;
+  char *start = NULL;
+
+  fp = safe_fopen(file, "r");
+  if (!fp)
+    return NULL;
+
+  buffer = fgets(buffer, buflen, fp);
+  safe_fclose(&fp);
+
+  if (!buffer)
+    return NULL;
+
+  SKIPWS(buffer);
+  start = buffer;
+
+  while (*buffer && !isspace(*buffer))
+    buffer++;
+
+  *buffer = '\0';
+
+  return start;
+}

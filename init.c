@@ -4141,22 +4141,8 @@ void mutt_init(int skip_sys_rc, struct ListHead *commands)
   }
   else
   {
-    FILE *f = NULL;
-    char *c = NULL;
-
-    if ((f = safe_fopen(SYSCONFDIR "/nntpserver", "r")))
-    {
-      if (fgets(buffer, sizeof(buffer), f) == NULL)
-        buffer[0] = '\0';
-      p = buffer;
-      SKIPWS(p);
-      c = p;
-      while (*c && (*c != ' ') && (*c != '\t') && (*c != '\r') && (*c != '\n'))
-        c++;
-      *c = '\0';
-      NewsServer = safe_strdup(p);
-      fclose(f);
-    }
+    p = file_read_keyword(SYSCONFDIR "/nntpserver", buffer, sizeof(buffer));
+    NewsServer = safe_strdup(p);
   }
 #endif
 
