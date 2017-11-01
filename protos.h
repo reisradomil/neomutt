@@ -336,7 +336,6 @@ int mutt_smtp_send(const struct Address *from, const struct Address *to, const s
 #endif
 
 size_t mutt_wstr_trunc(const char *src, size_t maxlen, size_t maxwid, size_t *width);
-int mutt_charlen(const char *s, int *width);
 int mutt_strwidth(const char *s);
 int mutt_compose_menu(struct Header *msg, char *fcc, size_t fcclen, struct Header *cur, int flags);
 int mutt_thread_set_flag(struct Header *hdr, int flag, int bf, int subthread);
