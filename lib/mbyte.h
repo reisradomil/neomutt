@@ -41,14 +41,14 @@ extern wchar_t ReplacementChar;
 #define IsWPrint(wc) (iswprint(wc) || (OPT_LOCALES ? 0 : (wc >= 0xa0)))
 #endif
 
-int mutt_charlen(const char *s, int *width);
-bool get_initials(const char *name, char *buf, int buflen);
-int my_width(const char *str, int col, bool display);
-int my_wcswidth(const wchar_t *s, size_t n);
-size_t width_ceiling(const wchar_t *s, size_t n, int w1);
-void my_wcstombs(char *dest, size_t dlen, const wchar_t *src, size_t slen);
+bool   get_initials(const char *name, char *buf, int buflen);
+int    is_shell_char(wchar_t ch);
+int    mutt_charlen(const char *s, int *width);
 size_t my_mbstowcs(wchar_t **pwbuf, size_t *pwbuflen, size_t i, char *buf);
-int is_shell_char(wchar_t ch);
-int my_wcwidth(wchar_t wc);
+void   my_wcstombs(char *dest, size_t dlen, const wchar_t *src, size_t slen);
+int    my_wcswidth(const wchar_t *s, size_t n);
+int    my_wcwidth(wchar_t wc);
+int    my_width(const char *str, int col, bool display);
+size_t width_ceiling(const wchar_t *s, size_t n, int w1);
 
 #endif /* _LIB_MBYTE_H */

@@ -746,6 +746,12 @@ int imap_wordcasecmp(const char *a, const char *b)
   return mutt_strcasecmp(a, tmp);
 }
 
+/**
+ * is_ascii - XXX
+ * @param p YYY
+ * @param len YYY
+ * @retval bool ZZZ
+ */
 bool is_ascii(const char *p, size_t len)
 {
   const char *s = p;
@@ -758,6 +764,11 @@ bool is_ascii(const char *p, size_t len)
   return true;
 }
 
+/**
+ * find_word - XXX
+ * @param src YYY
+ * @retval ptr ZZZ
+ */
 const char *find_word(const char *src)
 {
   const char *p = src;

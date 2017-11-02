@@ -1206,10 +1206,13 @@ int to_absolute_path(char *path, const char *reference)
 }
 
 /**
- * file_read_keyword - XXX
- * @param file   YYY
- * @param buffer YYY
- * @param buflen YYY
+ * file_read_keyword - Read a keyword from a file
+ * @param file   File to read
+ * @param buffer Buffer to store the keyword
+ * @param buflen Length of the buffer
+ *
+ * Read one line from the start of a file.
+ * Skip any leading whitespace and extract the first token.
  */
 char *file_read_keyword(const char *file, char *buffer, size_t buflen)
 {

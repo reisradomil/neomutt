@@ -35,17 +35,45 @@
 #include "memory.h"
 #include "string2.h"
 
+/**
+ * RFC822Specials - Characters with special meaning for email addresses
+ */
 const char RFC822Specials[] = "@.,:;<>[]\\\"()";
+
+/**
+ * is_special - XXX
+ */
 #define is_special(x) strchr(RFC822Specials, x)
 
+/**
+ * RFC822Error - An out-of-band error code
+ *
+ * Many of the Address functions set this variable on error.
+ * Its values are defined in #AddressError.
+ * Text for the errors can be looked up using #RFC822Errors.
+ */
 int RFC822Error = 0;
 
-/* these must defined in the same order as the numerated errors given in rfc822.h */
+/**
+ * RFC822Errors - Messages for the error codes in #AddressError
+ *
+ * These must defined in the same order as enum AddressError.
+ */
 const char *const RFC822Errors[] = {
   "out of memory",   "mismatched parenthesis", "mismatched quotes",
   "bad route in <>", "bad address in <>",      "bad address spec",
 };
 
+
+/**
+ * parse_quote - Extract a quoted string
+ * @param[in]  s        String, just after the opening quote mark
+ * @param[out] token    Buffer to store quoted string
+ * @param[out] tokenlen Length of quoted string
+ * @param[in]  tokenmax Length of buffer
+ * @retval ptr  First character after quoted string
+ * @retval NULL Error
+ */
 static const char *parse_quote(const char *s, char *token, size_t *tokenlen, size_t tokenmax)
 {
   while (*s)
@@ -69,6 +97,15 @@ static const char *parse_quote(const char *s, char *token, size_t *tokenlen, siz
   return NULL;
 }
 
+/**
+ * parse_comment - Extract a comment (parenthesised string)
+ * @param[in]  s          String, just after the opening parenthesis
+ * @param[out] comment    Buffer to store parenthesised string
+ * @param[out] commentlen Length of parenthesised string
+ * @param[in]  commentmax Length of buffer
+ * @retval ptr  First character after parenthesised string
+ * @retval NULL Error
+ */
 static const char *parse_comment(const char *s, char *comment, size_t *commentlen, size_t commentmax)
 {
   int level = 1;
@@ -102,6 +139,14 @@ static const char *parse_comment(const char *s, char *comment, size_t *commentle
   return s;
 }
 
+/**
+ * next_token - Find the next word, skipping quoted and parenthesised text
+ * @param[in]  s        String to search
+ * @param[out] token    Buffer for the token
+ * @param[out] tokenlen Length of the next token
+ * @param[in]  tokenmax Length of the buffer
+ * @retval ptr First character after the next token
+ */
 static const char *next_token(const char *s, char *token, size_t *tokenlen, size_t tokenmax)
 {
   if (*s == '(')
@@ -125,6 +170,30 @@ static const char *next_token(const char *s, char *token, size_t *tokenlen, size
   return s;
 }
 
+/**
+ * parse_mailboxdomain - Extract part of an email address (and a comment)
+ * @param[in]  s          String to parse
+ * @param[in]  nonspecial Specific characters that are valid
+ * @param[out] mailbox    Buffer for email address
+ * @param[out] mailboxlen Length of saved email address
+ * @param[in]  mailboxmax Length of mailbox buffer
+ * @param[out] comment    Buffer for comment
+ * @param[out] commentlen Length of saved comment
+ * @param[in]  commentmax Length of comment buffer
+ * @retval ptr First character after the email address part
+ *
+ * This will be called twice to parse an email address, first for the mailbox
+ * name, then for the domain name.  Each part can also have a comment in `()`.
+ * The comment can be at the start or end of the mailbox or domain.
+ *
+ * Examples:
+ * - john.doe@example.com
+ * - john.doe(comment)@example.com
+ * - john.doe@example.com(comment)
+ *
+ * The first call will return "john.doe" with optional comment, "comment".
+ * The second call will return "example.com" with optional comment, "comment".
+ */
 static const char *parse_mailboxdomain(const char *s, const char *nonspecial,
                                        char *mailbox, size_t *mailboxlen,
                                        size_t mailboxmax, char *comment,
@@ -157,6 +226,19 @@ static const char *parse_mailboxdomain(const char *s, const char *nonspecial,
   return s;
 }
 
+/**
+ * parse_address - Extract an email address
+ * @param[in]  s          String, just after the opening `<`
+ * @param[out] token      Buffer for the email address
+ * @param[out] tokenlen   Length of the email address
+ * @param[in]  tokenmax   Length of the email address buffer
+ * @param[out] comment    Buffer for any comments
+ * @param[out] commentlen Length of any comments
+ * @param[in]  commentmax Length of the comment buffer
+ * @param[in]  addr       Address to store the results
+ * @retval ptr  The closing `>` of the email address
+ * @retval NULL Error
+ */
 static const char *parse_address(const char *s, char *token, size_t *tokenlen,
                                  size_t tokenmax, char *comment, size_t *commentlen,
                                  size_t commentmax, struct Address *addr)
@@ -188,6 +270,15 @@ static const char *parse_address(const char *s, char *token, size_t *tokenlen,
   return s;
 }
 
+/**
+ * parse_addr_spec - XXX
+ * @param[in]  s          String, 
+ * @param[out] comment    Buffer for any comments
+ * @param[out] commentlen Length of any comments
+ * @param[in]  commentmax Length of the comments buffer
+ * @param[in]  addr       Address to fill in
+ * @retval ptr const char * ZZZ
+ */
 static const char *parse_addr_spec(const char *s, char *comment, size_t *commentlen,
                                    size_t commentmax, struct Address *addr)
 {
@@ -204,6 +295,15 @@ static const char *parse_addr_spec(const char *s, char *comment, size_t *comment
   return s;
 }
 
+/**
+ * add_addrspec - XXX
+ * @param top        YYY
+ * @param last       YYY
+ * @param phrase     YYY
+ * @param comment    YYY
+ * @param commentlen YYY
+ * @param commentmax YYY
+ */
 static void add_addrspec(struct Address **top, struct Address **last, const char *phrase,
                          char *comment, size_t *commentlen, size_t commentmax)
 {
@@ -222,6 +322,15 @@ static void add_addrspec(struct Address **top, struct Address **last, const char
   *last = cur;
 }
 
+/**
+ * parse_route_addr - XXX
+ * @param[in]  s          String, just after the opening `<`
+ * @param[out] comment    Buffer for any comments
+ * @param[out] commentlen Length of any comments
+ * @param[in]  commentmax Length of the comments buffer
+ * @param[in]  addr       Address to store the details
+ * @retval ptr const char * ZZZ
+ */
 static const char *parse_route_addr(const char *s, char *comment, size_t *commentlen,
                                     size_t commentmax, struct Address *addr)
 {
@@ -268,18 +377,36 @@ static const char *parse_route_addr(const char *s, char *comment, size_t *commen
   return s;
 }
 
-static void free_address(struct Address *a)
+/**
+ * free_address - Free a single Address
+ * @param a Address to free
+ *
+ * @note This doesn't alter the links if the Address is in a list.
+ */
+static void free_address(struct Address **a)
 {
-  FREE(&a->personal);
-  FREE(&a->mailbox);
-  FREE(&a);
+  if (!a || !*a)
+    return;
+  FREE(&(*a)->personal);
+  FREE(&(*a)->mailbox);
+  FREE(&(*a));
 }
 
+/**
+ * rfc822_new_address - Create a new Address
+ * @retval ptr Newly allocated Address
+ *
+ * Free the result with free_address() or rfc822_free_address()
+ */
 struct Address *rfc822_new_address(void)
 {
   return safe_calloc(1, sizeof(struct Address));
 }
 
+/**
+ * rfc822_free_address - Free a list of Addresses
+ * @param p Top of the list
+ */
 void rfc822_free_address(struct Address **p)
 {
   struct Address *t = NULL;
@@ -288,12 +415,17 @@ void rfc822_free_address(struct Address **p)
   {
     t = *p;
     *p = (*p)->next;
-    FREE(&t->personal);
-    FREE(&t->mailbox);
-    FREE(&t);
+    free_address(&t);
   }
 }
 
+/**
+ * rfc822_parse_adrlist - Parse a list of email addresses
+ * @param top List to append addresses
+ * @param s   String to parse
+ * @retval ptr  Top of the address list
+ * @retval NULL Error
+ */
 struct Address *rfc822_parse_adrlist(struct Address *top, const char *s)
 {
   int ws_pending, nl;
@@ -453,6 +585,14 @@ struct Address *rfc822_parse_adrlist(struct Address *top, const char *s)
   return top;
 }
 
+/**
+ * mutt_parse_adrlist - Parse a list of email addresses
+ * @param p Add to this List of Addresses
+ * @param s String to parse
+ * @retval ptr Head of the list of addresses
+ *
+ * The email addresses can be separated by whitespace or commas.
+ */
 struct Address *mutt_parse_adrlist(struct Address *p, const char *s)
 {
   const char *q = NULL;
@@ -478,6 +618,12 @@ struct Address *mutt_parse_adrlist(struct Address *p, const char *s)
   return p;
 }
 
+/**
+ * rfc822_remove_from_adrlist - XXX
+ * @param a       YYY
+ * @param mailbox YYY
+ * @retval int  ZZZ
+ */
 int rfc822_remove_from_adrlist(struct Address **a, const char *mailbox)
 {
   struct Address *p = NULL, *last = NULL, *t = NULL;
@@ -495,7 +641,7 @@ int rfc822_remove_from_adrlist(struct Address **a, const char *mailbox)
         (*a) = p->next;
       t = p;
       p = p->next;
-      free_address(t);
+      free_address(&t);
       rv = 0;
     }
     else
@@ -508,6 +654,11 @@ int rfc822_remove_from_adrlist(struct Address **a, const char *mailbox)
   return rv;
 }
 
+/**
+ * rfc822_qualify - XXX
+ * @param addr YYY
+ * @param host YYY
+ */
 void rfc822_qualify(struct Address *addr, const char *host)
 {
   char *p = NULL;
@@ -522,6 +673,13 @@ void rfc822_qualify(struct Address *addr, const char *host)
     }
 }
 
+/**
+ * rfc822_cat - XXX
+ * @param buf      YYY
+ * @param buflen   YYY
+ * @param value    YYY
+ * @param specials YYY
+ */
 void rfc822_cat(char *buf, size_t buflen, const char *value, const char *specials)
 {
   if (strpbrk(value, specials))
@@ -549,7 +707,10 @@ void rfc822_cat(char *buf, size_t buflen, const char *value, const char *special
 }
 
 /**
+ * rfc822_cpy_adr - XXX
  * rfc822_cpy_adr - Copy the real address
+ * @param addr YYY
+ * @retval ptr struct Address * ZZZ
  */
 struct Address *rfc822_cpy_adr(struct Address *addr)
 {
@@ -564,7 +725,11 @@ struct Address *rfc822_cpy_adr(struct Address *addr)
 }
 
 /**
+ * rfc822_cpy_adrlist - XXX
  * rfc822_cpy_adrlist - Copy a list of addresses
+ * @param addr  YYY
+ * @param prune YYY
+ * @retval ptr struct Address * ZZZ
  */
 struct Address *rfc822_cpy_adrlist(struct Address *addr, int prune)
 {
@@ -588,7 +753,12 @@ struct Address *rfc822_cpy_adrlist(struct Address *addr, int prune)
 }
 
 /**
+ * rfc822_append - XXX
  * rfc822_append - Append one list of addresses on another
+ * @param a     YYY
+ * @param b     YYY
+ * @param prune YYY
+ * @retval ptr struct Address * ZZZ
  *
  * append list 'b' to list 'a' and return the last element in the new list
  */
@@ -610,7 +780,10 @@ struct Address *rfc822_append(struct Address **a, struct Address *b, int prune)
 }
 
 /**
+ * rfc822_valid_msgid - XXX
  * rfc822_valid_msgid - Is the message id valid
+ * @param msgid YYY
+ * @retval bool  ZZZ
  *
  * incomplete. Only used to thwart the APOP MD5 attack (#2846).
  */
@@ -674,7 +847,11 @@ bool addrcmp(struct Address *a, struct Address *b)
 }
 
 /**
+ * addrsrc - XXX
  * addrsrc - search an e-mail address in a list
+ * @param a   YYY
+ * @param lst YYY
+ * @retval int  ZZZ
  */
 int addrsrc(struct Address *a, struct Address *lst)
 {
@@ -686,6 +863,11 @@ int addrsrc(struct Address *a, struct Address *lst)
   return 0;
 }
 
+/**
+ * has_recips - XXX
+ * @param a YYY
+ * @retval int  ZZZ
+ */
 int has_recips(struct Address *a)
 {
   int c = 0;
@@ -700,7 +882,11 @@ int has_recips(struct Address *a)
 }
 
 /**
+ * strict_addrcmp - XXX
  * strict_addrcmp - Strictly compare two address list
+ * @param a YYY
+ * @param b YYY
+ * @retval int  ZZZ
  * @retval 1 if address lists are strictly identical
  */
 int strict_addrcmp(const struct Address *a, const struct Address *b)

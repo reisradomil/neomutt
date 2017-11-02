@@ -61,16 +61,17 @@ enum AddressError
 bool            addrcmp(struct Address *a, struct Address *b);
 int             addrsrc(struct Address *a, struct Address *lst);
 int             has_recips(struct Address *a);
-struct Address *rfc822_new_address(void);
+struct Address *mutt_parse_adrlist(struct Address *p, const char *s);
+struct Address *rfc822_append(struct Address **a, struct Address *b, int prune);
+void            rfc822_cat(char *buf, size_t buflen, const char *value, const char *specials);
 struct Address *rfc822_cpy_adrlist(struct Address *addr, int prune);
 struct Address *rfc822_cpy_adr(struct Address *addr);
-struct Address *rfc822_append(struct Address **a, struct Address *b, int prune);
-bool            rfc822_valid_msgid(const char *msgid);
 void            rfc822_free_address(struct Address **p);
-void            rfc822_qualify(struct Address *addr, const char *host);
+struct Address *rfc822_new_address(void);
 struct Address *rfc822_parse_adrlist(struct Address *top, const char *s);
-void            rfc822_cat(char *buf, size_t buflen, const char *value, const char *specials);
+void            rfc822_qualify(struct Address *addr, const char *host);
 int             rfc822_remove_from_adrlist(struct Address **a, const char *mailbox);
+bool            rfc822_valid_msgid(const char *msgid);
 int             strict_addrcmp(const struct Address *a, const struct Address *b);
 
 #endif /* _LIB_ADDRESS_H */

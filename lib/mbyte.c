@@ -43,6 +43,9 @@
 
 bool OPT_LOCALES; /**< (pseudo) set if user has valid locale definition */
 
+/**
+ * ReplacementChar - XXX
+ */
 wchar_t ReplacementChar = '?';
 
 /**
@@ -130,7 +133,12 @@ bool get_initials(const char *name, char *buf, int buflen)
 }
 
 /**
+ * my_width - XXX
  * my_width - like wcwidth(), but gets const char* not wchar_t*
+ * @param str YYY
+ * @param col YYY
+ * @param display YYY
+ * @retval int ZZZ
  */
 int my_width(const char *str, int col, bool display)
 {
@@ -166,6 +174,11 @@ int my_width(const char *str, int col, bool display)
   return w;
 }
 
+/**
+ * my_wcwidth - XXX
+ * @param wc YYY
+ * @retval int ZZZ
+ */
 int my_wcwidth(wchar_t wc)
 {
   int n = wcwidth(wc);
@@ -178,6 +191,12 @@ int my_wcwidth(wchar_t wc)
   return 10;
 }
 
+/**
+ * my_wcswidth - XXX
+ * @param s YYY
+ * @param n YYY
+ * @retval int ZZZ
+ */
 int my_wcswidth(const wchar_t *s, size_t n)
 {
   int w = 0;
@@ -186,6 +205,13 @@ int my_wcswidth(const wchar_t *s, size_t n)
   return w;
 }
 
+/**
+ * width_ceiling - XXX
+ * @param s YYY
+ * @param n YYY
+ * @param w1 YYY
+ * @retval size_t ZZZ
+ */
 size_t width_ceiling(const wchar_t *s, size_t n, int w1)
 {
   const wchar_t *s0 = s;
@@ -196,6 +222,13 @@ size_t width_ceiling(const wchar_t *s, size_t n, int w1)
   return s - s0;
 }
 
+/**
+ * my_wcstombs - XXX
+ * @param dest YYY
+ * @param dlen YYY
+ * @param src YYY
+ * @param slen YYY
+ */
 void my_wcstombs(char *dest, size_t dlen, const wchar_t *src, size_t slen)
 {
   mbstate_t st;
@@ -237,6 +270,14 @@ void my_wcstombs(char *dest, size_t dlen, const wchar_t *src, size_t slen)
   }
 }
 
+/**
+ * my_mbstowcs - XXX
+ * @param pwbuf YYY
+ * @param pwbuflen YYY
+ * @param i YYY
+ * @param buf YYY
+ * @retval size_t ZZZ
+ */
 size_t my_mbstowcs(wchar_t **pwbuf, size_t *pwbuflen, size_t i, char *buf)
 {
   wchar_t wc;
@@ -279,6 +320,7 @@ size_t my_mbstowcs(wchar_t **pwbuf, size_t *pwbuflen, size_t i, char *buf)
 }
 
 /**
+ * is_shell_char - XXX
  * is_shell_char - Is character not typically part of a pathname
  * @param ch Character to examine
  * @retval 1 if the character is not typically part of a pathname
