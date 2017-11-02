@@ -30,11 +30,20 @@
  */
 
 #include "config.h"
-#include <stdbool.h>
 #include <stddef.h>
+#include <ctype.h>
+#include <limits.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include <string.h>
 #include <wchar.h>
+#include "mbyte.h"
+#include "memory.h"
 #include "string2.h"
+
+bool OPT_LOCALES; /**< (pseudo) set if user has valid locale definition */
+
+wchar_t ReplacementChar = '?';
 
 /**
  * mutt_charlen - Count the bytes in a (multibyte) character
@@ -119,3 +128,164 @@ bool get_initials(const char *name, char *buf, int buflen)
   *buf = 0;
   return true;
 }
+
+/**
+ * my_width - like wcwidth(), but gets const char* not wchar_t*
+ */
+int my_width(const char *str, int col, bool display)
+{
+  wchar_t wc;
+  int l, w = 0, nl = 0;
+  const char *p = str;
+
+  while (p && *p)
+  {
+    if (mbtowc(&wc, p, MB_CUR_MAX) >= 0)
+    {
+      l = wcwidth(wc);
+      if (l < 0)
+        l = 1;
+      /* correctly calc tab stop, even for sending as the
+       * line should look pretty on the receiving end */
+      if (wc == L'\t' || (nl && wc == L' '))
+      {
+        nl = 0;
+        l = 8 - (col % 8);
+      }
+      /* track newlines for display-case: if we have a space
+       * after a newline, assume 8 spaces as for display we
+       * always tab-fold */
+      else if (display && (wc == '\n'))
+        nl = 1;
+    }
+    else
+      l = 1;
+    w += l;
+    p++;
+  }
+  return w;
+}
+
+int my_wcwidth(wchar_t wc)
+{
+  int n = wcwidth(wc);
+  if (IsWPrint(wc) && n > 0)
+    return n;
+  if (!(wc & ~0x7f))
+    return 2;
+  if (!(wc & ~0xffff))
+    return 6;
+  return 10;
+}
+
+int my_wcswidth(const wchar_t *s, size_t n)
+{
+  int w = 0;
+  while (n--)
+    w += my_wcwidth(*s++);
+  return w;
+}
+
+size_t width_ceiling(const wchar_t *s, size_t n, int w1)
+{
+  const wchar_t *s0 = s;
+  int w = 0;
+  for (; n; s++, n--)
+    if ((w += my_wcwidth(*s)) > w1)
+      break;
+  return s - s0;
+}
+
+void my_wcstombs(char *dest, size_t dlen, const wchar_t *src, size_t slen)
+{
+  mbstate_t st;
+  size_t k;
+
+  /* First convert directly into the destination buffer */
+  memset(&st, 0, sizeof(st));
+  for (; slen && dlen >= MB_LEN_MAX; dest += k, dlen -= k, src++, slen--)
+    if ((k = wcrtomb(dest, *src, &st)) == (size_t)(-1))
+      break;
+
+  /* If this works, we can stop now */
+  if (dlen >= MB_LEN_MAX)
+  {
+    wcrtomb(dest, 0, &st);
+    return;
+  }
+
+  /* Otherwise convert any remaining data into a local buffer */
+  {
+    char buf[3 * MB_LEN_MAX];
+    char *p = buf;
+
+    for (; slen && p - buf < dlen; p += k, src++, slen--)
+      if ((k = wcrtomb(p, *src, &st)) == (size_t)(-1))
+        break;
+    p += wcrtomb(p, 0, &st);
+
+    /* If it fits into the destination buffer, we can stop now */
+    if (p - buf <= dlen)
+    {
+      memcpy(dest, buf, p - buf);
+      return;
+    }
+
+    /* Otherwise we truncate the string in an ugly fashion */
+    memcpy(dest, buf, dlen);
+    dest[dlen - 1] = '\0'; /* assume original dlen > 0 */
+  }
+}
+
+size_t my_mbstowcs(wchar_t **pwbuf, size_t *pwbuflen, size_t i, char *buf)
+{
+  wchar_t wc;
+  mbstate_t st;
+  size_t k;
+  wchar_t *wbuf = NULL;
+  size_t wbuflen;
+
+  wbuf = *pwbuf;
+  wbuflen = *pwbuflen;
+
+  while (*buf)
+  {
+    memset(&st, 0, sizeof(st));
+    for (; (k = mbrtowc(&wc, buf, MB_LEN_MAX, &st)) && k != (size_t)(-1) &&
+           k != (size_t)(-2);
+         buf += k)
+    {
+      if (i >= wbuflen)
+      {
+        wbuflen = i + 20;
+        safe_realloc(&wbuf, wbuflen * sizeof(*wbuf));
+      }
+      wbuf[i++] = wc;
+    }
+    if (*buf && (k == (size_t) -1 || k == (size_t) -2))
+    {
+      if (i >= wbuflen)
+      {
+        wbuflen = i + 20;
+        safe_realloc(&wbuf, wbuflen * sizeof(*wbuf));
+      }
+      wbuf[i++] = ReplacementChar;
+      buf++;
+    }
+  }
+  *pwbuf = wbuf;
+  *pwbuflen = wbuflen;
+  return i;
+}
+
+/**
+ * is_shell_char - Is character not typically part of a pathname
+ * @param ch Character to examine
+ * @retval 1 if the character is not typically part of a pathname
+ */
+int is_shell_char(wchar_t ch)
+{
+  static const wchar_t shell_chars[] = L"<>&()$?*;{}| "; /* ! not included because it can be part of a pathname in NeoMutt */
+  return wcschr(shell_chars, ch) != NULL;
+}
+

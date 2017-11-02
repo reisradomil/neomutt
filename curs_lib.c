@@ -1176,7 +1176,7 @@ void mutt_simple_format(char *dest, size_t destlen, int min_width, int max_width
         memset(&mbstate1, 0, sizeof(mbstate1));
 
       k = (k == (size_t)(-1)) ? 1 : n;
-      wc = replacement_char();
+      wc = ReplacementChar;
     }
     if (escaped)
     {
@@ -1324,7 +1324,7 @@ void mutt_paddstr(int n, const char *s)
       if (k == (size_t)(-1))
         memset(&mbstate, 0, sizeof(mbstate));
       k = (k == (size_t)(-1)) ? 1 : len;
-      wc = replacement_char();
+      wc = ReplacementChar;
     }
     if (!IsWPrint(wc))
       wc = '?';
@@ -1372,7 +1372,7 @@ size_t mutt_wstr_trunc(const char *src, size_t maxlen, size_t maxwid, size_t *wi
       if (cl == (size_t)(-1))
         memset(&mbstate, 0, sizeof(mbstate));
       cl = (cl == (size_t)(-1)) ? 1 : n;
-      wc = replacement_char();
+      wc = ReplacementChar;
     }
     cw = wcwidth(wc);
     /* hack because MUTT_TREE symbols aren't turned into characters
@@ -1429,7 +1429,7 @@ int mutt_strwidth(const char *s)
       if (k == (size_t)(-1))
         memset(&mbstate, 0, sizeof(mbstate));
       k = (k == (size_t)(-1)) ? 1 : n;
-      wc = replacement_char();
+      wc = ReplacementChar;
     }
     if (!IsWPrint(wc))
       wc = '?';
