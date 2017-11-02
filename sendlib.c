@@ -1677,17 +1677,6 @@ void mutt_write_references(const struct ListHead *r, FILE *f, size_t trim)
   FREE(&ref);
 }
 
-static const char *find_word(const char *src)
-{
-  const char *p = src;
-
-  while (p && *p && strchr(" \t\n", *p))
-    p++;
-  while (p && *p && !strchr(" \t\n", *p))
-    p++;
-  return p;
-}
-
 static int print_val(FILE *fp, const char *pfx, const char *value, int flags, size_t col)
 {
   while (value && *value)
