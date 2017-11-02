@@ -657,3 +657,66 @@ bool rfc822_valid_msgid(const char *msgid)
 
   return true;
 }
+
+/**
+ * addrcmp - compare two e-mail addresses
+ * @param a Address 1
+ * @param b Address 2
+ * @retval true if they are equivalent
+ */
+bool addrcmp(struct Address *a, struct Address *b)
+{
+  if (!a->mailbox || !b->mailbox)
+    return false;
+  if (mutt_strcasecmp(a->mailbox, b->mailbox) != 0)
+    return false;
+  return true;
+}
+
+/**
+ * addrsrc - search an e-mail address in a list
+ */
+int addrsrc(struct Address *a, struct Address *lst)
+{
+  for (; lst; lst = lst->next)
+  {
+    if (addrcmp(a, lst))
+      return 1;
+  }
+  return 0;
+}
+
+int has_recips(struct Address *a)
+{
+  int c = 0;
+
+  for (; a; a = a->next)
+  {
+    if (!a->mailbox || a->group)
+      continue;
+    c++;
+  }
+  return c;
+}
+
+/**
+ * strict_addrcmp - Strictly compare two address list
+ * @retval 1 if address lists are strictly identical
+ */
+int strict_addrcmp(const struct Address *a, const struct Address *b)
+{
+  while (a && b)
+  {
+    if ((mutt_strcmp(a->mailbox, b->mailbox) != 0) ||
+        (mutt_strcmp(a->personal, b->personal) != 0))
+      return 0;
+
+    a = a->next;
+    b = b->next;
+  }
+  if (a || b)
+    return 0;
+
+  return 1;
+}
+

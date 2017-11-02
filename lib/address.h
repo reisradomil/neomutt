@@ -58,6 +58,9 @@ enum AddressError
   ERR_BAD_ADDR_SPEC
 };
 
+bool            addrcmp(struct Address *a, struct Address *b);
+int             addrsrc(struct Address *a, struct Address *lst);
+int             has_recips(struct Address *a);
 struct Address *rfc822_new_address(void);
 struct Address *rfc822_cpy_adrlist(struct Address *addr, int prune);
 struct Address *rfc822_cpy_adr(struct Address *addr);
@@ -68,5 +71,6 @@ void            rfc822_qualify(struct Address *addr, const char *host);
 struct Address *rfc822_parse_adrlist(struct Address *top, const char *s);
 void            rfc822_cat(char *buf, size_t buflen, const char *value, const char *specials);
 int             rfc822_remove_from_adrlist(struct Address **a, const char *mailbox);
+int             strict_addrcmp(const struct Address *a, const struct Address *b);
 
 #endif /* _LIB_ADDRESS_H */

@@ -34,6 +34,7 @@ struct stat;
 #define MUTT_EOL  (1 << 1) /**< don't strip `\n` / `\r\n` */
 
 char *      file_read_keyword(const char *file, char *buffer, size_t buflen);
+int         mbox_check_empty(const char *path);
 const char *mutt_basename(const char *f);
 char *      mutt_concatn_path(char *dst, size_t dstlen, const char *dir, size_t dirlen, const char *fname, size_t fnamelen);
 char *      mutt_concat_path(char *d, const char *dir, const char *fname, size_t l);

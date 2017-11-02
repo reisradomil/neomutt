@@ -163,3 +163,23 @@ bool mutt_list_match(const char *s, struct ListHead *h)
   }
   return false;
 }
+
+int strict_cmp_stailq(const struct ListHead *ah, const struct ListHead *bh)
+{
+  struct ListNode *a = STAILQ_FIRST(ah);
+  struct ListNode *b = STAILQ_FIRST(bh);
+
+  while (a && b)
+  {
+    if (mutt_strcmp(a->data, b->data) != 0)
+      return 0;
+
+    a = STAILQ_NEXT(a, entries);
+    b = STAILQ_NEXT(b, entries);
+  }
+  if (a || b)
+    return 0;
+
+  return 1;
+}
+

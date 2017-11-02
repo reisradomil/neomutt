@@ -1236,3 +1236,21 @@ char *file_read_keyword(const char *file, char *buffer, size_t buflen)
 
   return start;
 }
+
+/**
+ * mbox_check_empty - Is the mailbox empty
+ * @param path Path to mailbox
+ * @retval 1 mailbox is not empty
+ * @retval 0 mailbox is empty
+ * @retval -1 on error
+ */
+int mbox_check_empty(const char *path)
+{
+  struct stat st;
+
+  if (stat(path, &st) == -1)
+    return -1;
+
+  return ((st.st_size == 0));
+}
+

@@ -86,34 +86,6 @@ static void append_signature(FILE *f)
 }
 
 /**
- * addrcmp - compare two e-mail addresses
- * @param a Address 1
- * @param b Address 2
- * @retval true if they are equivalent
- */
-static bool addrcmp(struct Address *a, struct Address *b)
-{
-  if (!a->mailbox || !b->mailbox)
-    return false;
-  if (mutt_strcasecmp(a->mailbox, b->mailbox) != 0)
-    return false;
-  return true;
-}
-
-/**
- * addrsrc - search an e-mail address in a list
- */
-static int addrsrc(struct Address *a, struct Address *lst)
-{
-  for (; lst; lst = lst->next)
-  {
-    if (addrcmp(a, lst))
-      return 1;
-  }
-  return 0;
-}
-
-/**
  * mutt_remove_xrefs - Remove cross-references
  *
  * Remove addresses from "b" which are contained in "a"
@@ -1255,19 +1227,6 @@ static int is_reply(struct Header *reply, struct Header *orig)
     return 0;
   return mutt_list_find(&orig->env->references, reply->env->message_id) ||
          mutt_list_find(&orig->env->in_reply_to, reply->env->message_id);
-}
-
-static int has_recips(struct Address *a)
-{
-  int c = 0;
-
-  for (; a; a = a->next)
-  {
-    if (!a->mailbox || a->group)
-      continue;
-    c++;
-  }
-  return c;
 }
 
 static int search_attach_keyword(char *filename)
