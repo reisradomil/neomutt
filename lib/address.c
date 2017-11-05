@@ -619,8 +619,8 @@ struct Address *mutt_parse_adrlist(struct Address *p, const char *s)
 }
 
 /**
- * rfc822_remove_from_adrlist - XXX
- * @param a       YYY
+ * rfc822_remove_from_adrlist - Remove an Address from a list
+ * @param a       Address list
  * @param mailbox YYY
  * @retval int  ZZZ
  */
