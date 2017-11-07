@@ -574,25 +574,6 @@ static int strict_addrcmp(const struct Address *a, const struct Address *b)
   return 1;
 }
 
-static int strict_cmp_stailq(const struct ListHead *ah, const struct ListHead *bh)
-{
-  struct ListNode *a = STAILQ_FIRST(ah);
-  struct ListNode *b = STAILQ_FIRST(bh);
-
-  while (a && b)
-  {
-    if (mutt_strcmp(a->data, b->data) != 0)
-      return 0;
-
-    a = STAILQ_NEXT(a, entries);
-    b = STAILQ_NEXT(b, entries);
-  }
-  if (a || b)
-    return 0;
-
-  return 1;
-}
-
 static int strict_cmp_envelopes(const struct Envelope *e1, const struct Envelope *e2)
 {
   if (e1 && e2)
