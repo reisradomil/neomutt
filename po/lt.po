@@ -69,7 +69,7 @@ msgstr "Aliasai"
 #. L10N: prompt to add a new alias
 #: alias.c:318
 msgid "Alias as: "
-msgstr "Aliase kaip:"
+msgstr "Aliase kaip: "
 
 #: alias.c:324
 msgid "You already have an alias defined with that name!"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: alias.c:355
 msgid "Address: "
-msgstr "Adresas:"
+msgstr "Adresas: "
 
 #: alias.c:365 send.c:241
 #, c-format
@@ -90,7 +90,7 @@ msgstr ""
 
 #: alias.c:376
 msgid "Personal name: "
-msgstr "Asmens vardas:"
+msgstr "Asmens vardas: "
 
 #: alias.c:385
 #, c-format
@@ -100,7 +100,7 @@ msgstr "[%s = %s] Tinka?"
 #: alias.c:404 recvattach.c:452 recvattach.c:475 recvattach.c:489
 #: recvattach.c:503 recvattach.c:539
 msgid "Save to file: "
-msgstr "Išsaugoti į bylą:"
+msgstr "Išsaugoti į bylą: "
 
 #: alias.c:418
 msgid "Error reading alias file"
@@ -320,7 +320,7 @@ msgstr "Klaida skaitant katalogą."
 
 #: browser.c:1683
 msgid "File Mask: "
-msgstr "Bylų kaukė:"
+msgstr "Bylų kaukė: "
 
 #. L10N: The highlighted letters must match the "Sort" options
 #: browser.c:1755
@@ -3555,9 +3555,8 @@ msgid "PKA verified signer's address is: "
 msgstr ""
 
 #: ncrypt/crypt_gpgme.c:1357 ncrypt/crypt_gpgme.c:3530
-#, fuzzy
 msgid "Fingerprint: "
-msgstr "Pirštų antspaudas: %s"
+msgstr "Pirštų antspaudas: "
 
 #: ncrypt/crypt_gpgme.c:1420
 msgid ""
@@ -3585,9 +3584,8 @@ msgid "KeyID "
 msgstr ""
 
 #: ncrypt/crypt_gpgme.c:1486 ncrypt/crypt_gpgme.c:1491
-#, fuzzy
 msgid "created: "
-msgstr "Sukurti %s?"
+msgstr "sukurtas: "
 
 #: ncrypt/crypt_gpgme.c:1568
 #, c-format
@@ -3808,14 +3806,12 @@ msgid "Name: "
 msgstr ""
 
 #: ncrypt/crypt_gpgme.c:3529
-#, fuzzy
 msgid "Valid From: "
-msgstr "Blogas mėnuo: %s"
+msgstr "Galioja nuo: "
 
 #: ncrypt/crypt_gpgme.c:3529
-#, fuzzy
 msgid "Valid To: "
-msgstr "Blogas mėnuo: %s"
+msgstr "Galioja iki: "
 
 #: ncrypt/crypt_gpgme.c:3530
 msgid "Key Type: "
@@ -3834,16 +3830,14 @@ msgid "Issued By: "
 msgstr ""
 
 #: ncrypt/crypt_gpgme.c:3531
-#, fuzzy
 msgid "Subkey: "
-msgstr "Rakto ID: ox%s"
+msgstr "Poraktis: "
 
 #. L10N: comes after the Name or aka if the key is invalid
 #. L10N: describes a subkey
 #: ncrypt/crypt_gpgme.c:3585 ncrypt/crypt_gpgme.c:3726
-#, fuzzy
 msgid "[Invalid]"
-msgstr "Blogas mėnuo: %s"
+msgstr "[Blogas]"
 
 #. L10N: This is printed after "Key Type: " and looks like this:
 #. *       PGP, 2048 bit RSA
@@ -4027,7 +4021,7 @@ msgstr "Įvesk rakto ID, skirtą %s: "
 
 #: ncrypt/crypt_gpgme.c:4704 ncrypt/pgpkey.c:726
 msgid "Please enter the key ID: "
-msgstr "Prašau, įvesk rakto ID:"
+msgstr "Prašau, įvesk rakto ID: "
 
 #: ncrypt/crypt_gpgme.c:4716
 #, fuzzy, c-format
@@ -4353,9 +4347,8 @@ msgid "Error: unable to create OpenSSL subprocess!"
 msgstr "[-- Klaida: negaliu sukurti OpenSSL subproceso! --]\n"
 
 #: ncrypt/smime.c:1188
-#, fuzzy
 msgid "Label for certificate: "
-msgstr "Nepavyko gauti sertifikato iš peer'o"
+msgstr "Sertifikato etiketė: "
 
 #: ncrypt/smime.c:1280
 #, fuzzy
