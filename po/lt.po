@@ -1239,7 +1239,7 @@ msgstr "Nėra, ką daryti."
 
 #: curs_main.c:1249
 msgid "Enter Message-Id: "
-msgstr "Įvesk žinutės ID: "
+msgstr "Įvesk laiško ID: "
 
 #: curs_main.c:1257
 msgid "Article has no parent reference."
@@ -1265,14 +1265,12 @@ msgid "No Message-Id. Unable to perform operation."
 msgstr ""
 
 #: curs_main.c:1319 imap/message.c:669 nntp.c:1283 pop.c:300
-#, fuzzy
 msgid "Fetching message headers..."
-msgstr "Paimu laiškų antraštes... [%d/%d]"
+msgstr "Paimu laiškų antraštes..."
 
 #: curs_main.c:1394
-#, fuzzy
 msgid "No deleted messages found in the thread."
-msgstr "ištrinti visus laiškus gijoje"
+msgstr "Šioje gijoje nėra ištrintų laiškų."
 
 #: curs_main.c:1414
 msgid "Jump to message: "
