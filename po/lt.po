@@ -2326,9 +2326,9 @@ msgid "invalid header field"
 msgstr "blogas antraštės laukas"
 
 #: init.c:2163
-#, fuzzy, c-format
+#, c-format
 msgid "restore_default(%s): error in regex: %s\n"
-msgstr "mutt_restore_default(%s): klaida regex'e: %s\n"
+msgstr "restore_default(%s): klaida regex'e: %s\n"
 
 #: init.c:2453 init.c:2624
 #, c-format
@@ -6292,14 +6292,12 @@ msgid "No subject specified."
 msgstr "Nenurodyta jokia tema."
 
 #: send.c:1948
-#, fuzzy
 msgid "No newsgroup specified."
-msgstr "Nenurodyta jokia tema."
+msgstr "Nenurodyta jokia naujienų grupė."
 
 #: send.c:1956
-#, fuzzy
 msgid "No attachments, cancel sending?"
-msgstr "taisyti priedo Transfer-Encoding"
+msgstr "Nėra priedų, atšaukti siuntimą?"
 
 #: send.c:1962
 msgid "Message contains text matching \"$attach_keyword\". Not sending."
@@ -6310,9 +6308,8 @@ msgid "Sending message..."
 msgstr "Siunčiu laišką..."
 
 #: send.c:2055
-#, fuzzy
 msgid "Save attachments in Fcc?"
-msgstr "žiūrėti priedą kaip tekstą"
+msgstr "Išsaugoti priedus Fcc?"
 
 #: send.c:2162
 msgid "Could not send the message."
@@ -6340,14 +6337,13 @@ msgid "%s no longer exists!"
 msgstr "%s nebeegzistuoja!"
 
 #: sendlib.c:919
-#, fuzzy, c-format
+#, c-format
 msgid "%s isn't a regular file."
-msgstr "%s nėra pašto dėžutė."
+msgstr "%s nėra paprasta byla."
 
 #: sendlib.c:1090
-#, fuzzy
 msgid "Could not find any mime.types file."
-msgstr "Negalėjau išsiųsti laiško."
+msgstr "Negalėjau rasti jokios mime.types bylos."
 
 #: sendlib.c:1169
 #, c-format
@@ -6388,29 +6384,28 @@ msgid "Caught signal %d...  Exiting.\n"
 msgstr "Sugavau signalą %d...  Išeinu.\n"
 
 #: smtp.c:146
-#, fuzzy, c-format
+#, c-format
 msgid "SMTP session failed: %s"
-msgstr "Nepavyko pasisveikinti."
+msgstr "SMTP sesija nepavyko: %s"
 
 #: smtp.c:189
-#, fuzzy, c-format
+#, c-format
 msgid "SMTP session failed: unable to open %s"
-msgstr "Nepavyko pasisveikinti."
+msgstr "SMTP sesija nepavyko: negaliu atidaryti %s"
 
 #: smtp.c:299
-#, fuzzy, c-format
+#, c-format
 msgid "Invalid SMTP URL: %s"
-msgstr "Blogas mėnuo: %s"
+msgstr "Blogas SMTP URL: %s"
 
 #: smtp.c:488
-#, fuzzy, c-format
+#, c-format
 msgid "%s authentication failed, trying next method"
-msgstr "SASL autentikacija nepavyko."
+msgstr "%s autentikacija nepavyko, bandau kitą metodą"
 
 #: smtp.c:505 smtp.c:525
-#, fuzzy
 msgid "SASL authentication failed"
-msgstr "SASL autentikacija nepavyko."
+msgstr "SASL autentikacija nepavyko"
 
 #: smtp.c:622
 msgid "SMTP server does not support authentication"
@@ -6505,7 +6500,6 @@ msgid ""
 msgstr ""
 
 #: version.c:90
-#, fuzzy
 msgid ""
 "Copyright (C) 1996-2016 Michael R. Elkins and others.\n"
 "NeoMutt comes with ABSOLUTELY NO WARRANTY; for details type `neomutt -vv'.\n"
@@ -6519,13 +6513,12 @@ msgstr ""
 "tikromis sąlygomis; rašyk 'neomutt -vv' dėl smulkmenų.\n"
 
 #: version.c:410
-#, fuzzy
 msgid ""
 "\n"
 "Default options:"
 msgstr ""
 "\n"
-"Kompiliavimo parinktys:"
+"Įprastos parinktys:"
 
 #: version.c:413
 msgid ""
