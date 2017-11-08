@@ -1290,9 +1290,8 @@ msgstr "Blogas laiško numeris."
 
 #. L10N: CHECK_ACL
 #: curs_main.c:1475 curs_main.c:2823 pager.c:2781
-#, fuzzy
 msgid "Cannot delete message(s)"
-msgstr "Nėra ištrintų laiškų."
+msgstr "Negaliu ištrinti laiškų."
 
 #: curs_main.c:1478
 msgid "Delete messages matching: "
@@ -1326,9 +1325,8 @@ msgstr "Pažymėti laiškus, tenkinančius: "
 
 #. L10N: CHECK_ACL
 #: curs_main.c:1680 curs_main.c:3228 pager.c:3094
-#, fuzzy
 msgid "Cannot undelete message(s)"
-msgstr "Nėra ištrintų laiškų."
+msgstr "Negaliu sugrąžinti laiškų."
 
 #: curs_main.c:1683
 msgid "Undelete messages matching: "
@@ -1485,9 +1483,8 @@ msgid "No new messages in this limited view."
 msgstr "Tėvinis laiškas nematomas ribotame vaizde"
 
 #: curs_main.c:2504
-#, fuzzy
 msgid "No new messages."
-msgstr "Nėra naujų laiškų"
+msgstr "Nėra naujų laiškų."
 
 #: curs_main.c:2509
 #, fuzzy
@@ -1495,9 +1492,8 @@ msgid "No unread messages in this limited view."
 msgstr "Tėvinis laiškas nematomas ribotame vaizde"
 
 #: curs_main.c:2511
-#, fuzzy
 msgid "No unread messages."
-msgstr "Nėra neskaitytų laiškų"
+msgstr "Nėra neskaitytų laiškų."
 
 #. L10N: CHECK_ACL
 #: curs_main.c:2529
@@ -1525,9 +1521,8 @@ msgstr "Gijoje yra neskaitytų laiškų."
 
 #. L10N: CHECK_ACL
 #: curs_main.c:2778 pager.c:2747
-#, fuzzy
 msgid "Cannot delete message"
-msgstr "Nėra ištrintų laiškų."
+msgstr "Negaliu ištrinti laiško"
 
 #. L10N: CHECK_ACL
 #: curs_main.c:2880
@@ -1999,9 +1994,9 @@ msgid "Login failed."
 msgstr "Nepavyko pasisveikinti."
 
 #: imap/auth_sasl.c:109 nntp.c:381 nntp.c:446 smtp.c:391
-#, fuzzy, c-format
+#, c-format
 msgid "Authenticating (%s)..."
-msgstr "Autentikuojuosi (APOP)..."
+msgstr "Autentikuojuosi (%s)..."
 
 #: imap/auth_sasl.c:238 pop_auth.c:188
 msgid "SASL authentication failed."
@@ -2040,24 +2035,22 @@ msgid "Cannot rename root folder"
 msgstr "Negaliu sukurti filtro"
 
 #: imap/browse.c:422
-#, fuzzy, c-format
+#, c-format
 msgid "Rename mailbox %s to: "
-msgstr "Sukurti dėžutę: "
+msgstr "Pervadinti %s dėžutę į: "
 
 #: imap/browse.c:439
-#, fuzzy, c-format
+#, c-format
 msgid "Rename failed: %s"
-msgstr "Nepavyko pasisveikinti."
+msgstr "Nepavyko pervadinti: %s"
 
 #: imap/browse.c:444
-#, fuzzy
 msgid "Mailbox renamed."
-msgstr "Dėžutė sukurta."
+msgstr "Pašto dėžutė pervadinta."
 
 #: imap/command.c:150
-#, fuzzy
 msgid "Mailbox closed"
-msgstr "Pašto dėžutė ištrinta."
+msgstr "Pašto dėžutė uždaryta."
 
 #: imap/command.c:1060
 #, fuzzy, c-format
@@ -2075,7 +2068,6 @@ msgid "Closing connection to %s..."
 msgstr "Uždarau jungtį su %s..."
 
 #: imap/imap.c:364
-#, fuzzy
 msgid "This IMAP server is ancient. NeoMutt does not work with it."
 msgstr "Šis IMAP serveris yra senoviškas. NeoMutt su juo neveikia."
 
@@ -2097,9 +2089,8 @@ msgid "Selecting %s..."
 msgstr "Parenku %s..."
 
 #: imap/imap.c:808
-#, fuzzy
 msgid "Error opening mailbox"
-msgstr "Klaida rašant į pašto dėžutę!"
+msgstr "Klaida atidarant pašto dėžutę"
 
 #: imap/imap.c:858 imap/imap.c:2506 imap/message.c:1336 muttlib.c:1535
 #, c-format
@@ -2126,9 +2117,9 @@ msgid "Marking %d messages deleted..."
 msgstr "Pažymiu %d laiškus ištrintais..."
 
 #: imap/imap.c:1517
-#, fuzzy, c-format
+#, c-format
 msgid "Saving changed messages... [%d/%d]"
-msgstr "Išsaugau laiško būsenos flagus... [%d/%d]"
+msgstr "Išsaugau pasikeitusius laiškus... [%d/%d]"
 
 #: imap/imap.c:1572
 msgid "Error saving flags. Close anyway?"
@@ -2158,9 +2149,8 @@ msgid "Server-side custom search not supported: %s"
 msgstr ""
 
 #: imap/imap.c:2205
-#, fuzzy
 msgid "Bad mailbox name"
-msgstr "Sukurti dėžutę: "
+msgstr "Blogas pašto dėžutės pavadinimas"
 
 #: imap/imap.c:2228
 #, c-format
@@ -2168,19 +2158,19 @@ msgid "Subscribing to %s..."
 msgstr "Užsakau %s..."
 
 #: imap/imap.c:2230
-#, fuzzy, c-format
+#, c-format
 msgid "Unsubscribing from %s..."
 msgstr "Atsisakau %s..."
 
 #: imap/imap.c:2240 init.c:4605
-#, fuzzy, c-format
+#, c-format
 msgid "Subscribed to %s"
-msgstr "Užsakau %s..."
+msgstr "Užsakiau %s"
 
 #: imap/imap.c:2242 init.c:4659
-#, fuzzy, c-format
+#, c-format
 msgid "Unsubscribed from %s"
-msgstr "Atsisakau %s..."
+msgstr "Atsisakiau %s"
 
 #: imap/imap.c:2491 imap/message.c:1300
 #, c-format
@@ -2196,9 +2186,9 @@ msgid "Unable to fetch headers from this IMAP server version."
 msgstr "Negaliu paimti antraščių iš šios IMAP serverio versijos."
 
 #: imap/message.c:538
-#, fuzzy, c-format
+#, c-format
 msgid "Could not create temporary file %s"
-msgstr "Negaliu sukurti laikinos bylos!"
+msgstr "Negaliu sukurti laikinos bylos %s"
 
 #. L10N:
 #. Comparing the cached data with the IMAP server's data
