@@ -2229,9 +2229,9 @@ msgid "%s: unknown sorting method"
 msgstr "%s: nežinomas rikiavimo metodas"
 
 #: init.c:410 init.c:444 init.c:3014
-#, fuzzy, c-format
+#, c-format
 msgid "%s: Unknown type."
-msgstr "%s: nežinomas tipas"
+msgstr "%s: nežinomas tipas."
 
 #: init.c:875
 #, c-format
@@ -2243,12 +2243,11 @@ msgid "Not enough subexpressions for template"
 msgstr ""
 
 #: init.c:962
-#, fuzzy, c-format
+#, c-format
 msgid "finish: too many arguments"
-msgstr "push: per daug argumentų"
+msgstr "finish: per daug argumentų"
 
 #: init.c:1216 init.c:1224 init.c:1247
-#, fuzzy
 msgid "not enough arguments"
 msgstr "per mažai argumentų"
 
