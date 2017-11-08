@@ -1143,7 +1143,7 @@ msgstr "Spausk bet kokį klavišą..."
 
 #: curs_lib.c:903
 msgid " ('?' for list): "
-msgstr "('?' parodo sąrašą): "
+msgstr " ('?' parodo sąrašą): "
 
 #: curs_main.c:82 curs_main.c:1140
 msgid "No mailbox is open."
@@ -3414,7 +3414,7 @@ msgstr "%d palikti, %d ištrinti."
 #: mx.c:996
 #, c-format
 msgid " Press '%s' to toggle write"
-msgstr "Spausk '%s', kad perjungtum rašymą"
+msgstr " Spausk '%s', kad perjungtum rašymą"
 
 #: mx.c:998
 msgid "Use 'toggle-write' to re-enable write!"
