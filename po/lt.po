@@ -4,7 +4,7 @@
 # This file is distributed under the same license as the NeoMutt package.
 #
 # Tadas <btadas@is.lt>, 2000
-# Marius Gedminas <mgedmin@puni.osf.lt>, 2000
+# Marius Gedminas <marius@gedmin.as>, 2000
 # Gediminas Paulauskas <menesis@delfi.lt>, 2000
 #
 msgid ""
@@ -103,18 +103,16 @@ msgid "Save to file: "
 msgstr "Išsaugoti į bylą:"
 
 #: alias.c:418
-#, fuzzy
 msgid "Error reading alias file"
-msgstr "Klaida bandant žiūrėti bylą"
+msgstr "Klaida bandant skaityti aliasų bylą"
 
 #: alias.c:442
 msgid "Alias added."
 msgstr "Aliasas įdėtas."
 
 #: alias.c:450
-#, fuzzy
 msgid "Error seeking in alias file"
-msgstr "Klaida bandant žiūrėti bylą"
+msgstr "Klaida bandant pozicionuoti aliasų bylą"
 
 #: attach.c:122 attach.c:254 attach.c:437 attach.c:990
 msgid "Can't match nametemplate, continue?"
@@ -140,9 +138,8 @@ msgid "Failure to open file to strip headers."
 msgstr "Nepavyko atidaryti bylos antraštėms išmesti."
 
 #: attach.c:193
-#, fuzzy
 msgid "Failure to rename file."
-msgstr "Nepavyko atidaryti bylos antraštėms nuskaityti."
+msgstr "Nepavyko pervadinti bylos."
 
 #: attach.c:206
 #, c-format
@@ -182,14 +179,14 @@ msgid "---Command: %-30.30s Attachment: %s"
 msgstr ""
 
 #: attach.c:595
-#, fuzzy, c-format
+#, c-format
 msgid "---Attachment: %s: %s"
-msgstr "-- Priedai"
+msgstr "-- Priedas: %s: %s"
 
 #: attach.c:597
-#, fuzzy, c-format
+#, c-format
 msgid "---Attachment: %s"
-msgstr "-- Priedai"
+msgstr "-- Priedas: %s"
 
 #: attach.c:677 attach.c:709 attach.c:1023 attach.c:1079 handler.c:1444
 #: ncrypt/pgpkey.c:579 ncrypt/pgpkey.c:760
@@ -207,17 +204,17 @@ msgstr "Aš nežinau, kaip tai atspausdinti!"
 #: bcache.c:163
 #, c-format
 msgid "Path too long: %s%s%s"
-msgstr ""
+msgstr "Kelias per ilgas: %s%s%s"
 
 #: bcache.c:171
-#, fuzzy, c-format
+#, c-format
 msgid "Message cache isn't a directory: %s."
-msgstr "%s nėra katalogas."
+msgstr "Pranešimų talpykla nėra katalogas: %s."
 
 #: bcache.c:179
-#, fuzzy, c-format
+#, c-format
 msgid "Can't create %s %s"
-msgstr "Negaliu sukurti %s: %s."
+msgstr "Negaliu sukurti %s: %s"
 
 #: browser.c:78
 msgid "Chdir"
@@ -236,14 +233,12 @@ msgid "List"
 msgstr ""
 
 #: browser.c:89
-#, fuzzy
 msgid "Subscribe"
-msgstr "Užsakau %s..."
+msgstr "Užsakyti"
 
 #: browser.c:90
-#, fuzzy
 msgid "Unsubscribe"
-msgstr "Atsisakau %s..."
+msgstr "Atsisakyti"
 
 #: browser.c:91 curs_main.c:843
 msgid "Catchup"
@@ -255,9 +250,9 @@ msgid "%s is not a directory."
 msgstr "%s nėra katalogas."
 
 #: browser.c:968
-#, fuzzy, c-format
+#, c-format
 msgid "Subscribed newsgroups"
-msgstr "Užsakau %s..."
+msgstr "Užsakiau naujienų grupes"
 
 #: browser.c:970
 #, c-format
@@ -287,18 +282,16 @@ msgid "Create is only supported for IMAP mailboxes"
 msgstr "Kol kas sukurti gali tik IMAP pašto dėžutes"
 
 #: browser.c:1543
-#, fuzzy
 msgid "Rename is only supported for IMAP mailboxes"
-msgstr "Kol kas sukurti gali tik IMAP pašto dėžutes"
+msgstr "Kol kas pervadinti gali tik IMAP pašto dėžutes"
 
 #: browser.c:1564
 msgid "Delete is only supported for IMAP mailboxes"
 msgstr "Kol kas ištrinti gali tik IMAP pašto dėžutes"
 
 #: browser.c:1574
-#, fuzzy
 msgid "Cannot delete root folder"
-msgstr "Negaliu sukurti filtro"
+msgstr "Negaliu ištrinti pagrindinio katalogo"
 
 #: browser.c:1577
 #, c-format
@@ -310,9 +303,8 @@ msgid "Mailbox deleted."
 msgstr "Pašto dėžutė ištrinta."
 
 #: browser.c:1595
-#, fuzzy
 msgid "Mailbox deletion failed."
-msgstr "Pašto dėžutė ištrinta."
+msgstr "Pašto dėžutės ištrinti nepavyko."
 
 #: browser.c:1598
 msgid "Mailbox not deleted."
@@ -364,24 +356,22 @@ msgid "Error trying to view file"
 msgstr "Klaida bandant žiūrėti bylą"
 
 #: browser.c:1996
-#, fuzzy, c-format
+#, c-format
 msgid "Subscribe pattern: "
-msgstr "Užsakau %s..."
+msgstr "Užsakymo pattern'as: "
 
 #: browser.c:1998
-#, fuzzy, c-format
+#, c-format
 msgid "Unsubscribe pattern: "
-msgstr "Atsisakau %s..."
+msgstr "Atsisakymo pattern'as: "
 
 #: browser.c:2019
-#, fuzzy
 msgid "No newsgroups match the mask"
-msgstr "Nė viena byla netinka bylų kaukei"
+msgstr "Nė viena naujienų grupė neatitinka kaukės"
 
 #: buffy.c:753
-#, fuzzy
 msgid "New mail in "
-msgstr "Naujas paštas dėžutėje %s."
+msgstr "Naujas paštas dėžutėje %s"
 
 #: color.c:406
 #, c-format
@@ -399,9 +389,9 @@ msgid "%s: no such object"
 msgstr "%s: nėra tokio objekto"
 
 #: color.c:519
-#, fuzzy, c-format
+#, c-format
 msgid "%s: command valid only for index, body, header objects"
-msgstr "%s: komanda teisinga tik indekso objektams"
+msgstr "%s: komanda teisinga tik indekso, teksto, antraštės objektams"
 
 #: color.c:526 init.c:1042
 #, c-format
@@ -454,20 +444,18 @@ msgid "Could not copy message"
 msgstr "Negalėjau kopijuoti laiško"
 
 #: commands.c:208
-#, fuzzy
 msgid "S/MIME signature successfully verified."
 msgstr "S/MIME parašas patikrintas sėkmingai."
 
 #: commands.c:210
 msgid "S/MIME certificate owner does not match sender."
-msgstr ""
+msgstr "S/MIME sertifikato savininkas neatitinka siuntėjo."
 
 #: commands.c:213 commands.c:223
 msgid "Warning: Part of this message has not been signed."
-msgstr ""
+msgstr "Dėmesio: dalis pranešimo nebuvo pasirašyta."
 
 #: commands.c:215
-#, fuzzy
 msgid "S/MIME signature could NOT be verified."
 msgstr "S/MIME parašas NEGALI būti patikrintas."
 
@@ -515,14 +503,12 @@ msgid "Bounce messages to %s"
 msgstr "Nukreipti laiškus į %s"
 
 #: commands.c:336 recvcmd.c:213
-#, fuzzy
 msgid "Message not bounced."
-msgstr "Laiškas nukreiptas."
+msgstr "Laiškas nenukreiptas."
 
 #: commands.c:336 recvcmd.c:213
-#, fuzzy
 msgid "Messages not bounced."
-msgstr "Laiškai nukreipti."
+msgstr "Laiškai nenukreipti."
 
 #: commands.c:346 recvcmd.c:232
 msgid "Message bounced."
@@ -533,9 +519,8 @@ msgid "Messages bounced."
 msgstr "Laiškai nukreipti."
 
 #: commands.c:413 commands.c:449 commands.c:469
-#, fuzzy
 msgid "Can't create filter process"
-msgstr "Negaliu sukurti filtro"
+msgstr "Negaliu sukurti filtro proceso"
 
 #: commands.c:501
 msgid "Pipe to command: "
@@ -647,17 +632,17 @@ msgid "Content-Type changed to %s."
 msgstr "Content-Type pakeistas į %s."
 
 #: commands.c:1010
-#, fuzzy, c-format
+#, c-format
 msgid "Character set changed to %s; %s."
-msgstr "Character set pakeistas į %s."
+msgstr "Koduotė pakeista į %s %s."
 
 #: commands.c:1012
 msgid "not converting"
-msgstr ""
+msgstr "neperkoduojant"
 
 #: commands.c:1012
 msgid "converting"
-msgstr ""
+msgstr "perkoduojant"
 
 #: compose.c:71
 msgid "There are no attachments."
@@ -690,9 +675,8 @@ msgstr ""
 
 #. L10N: Compose menu field.  May not want to translate.
 #: compose.c:129
-#, fuzzy
 msgid "Reply-To: "
-msgstr "Atsakyt"
+msgstr ""
 
 #. L10N: Compose menu field.  May not want to translate.
 #: compose.c:131 compose.c:938
@@ -730,15 +714,13 @@ msgstr ""
 
 #. L10N: Compose menu field.  May not want to translate.
 #: compose.c:152
-#, fuzzy
 msgid "Followup-To: "
-msgstr "Pratęsti-į %s%s?"
+msgstr ""
 
 #. L10N: Compose menu field.  May not want to translate.
 #: compose.c:154
-#, fuzzy
 msgid "X-Comment-To: "
-msgstr "taisyti Reply-To lauką"
+msgstr ""
 
 #: compose.c:159 compose.c:175
 msgid "Send"
@@ -772,18 +754,16 @@ msgid "Descrip"
 msgstr "Apraš"
 
 #: compose.c:177
-#, fuzzy
 msgid "Newsgroups"
-msgstr "Nenurodyta jokia tema."
+msgstr "Grupės"
 
 #: compose.c:248
-#, fuzzy
 msgid "Not supported"
-msgstr "Žymėjimas nepalaikomas."
+msgstr "Nepalaikomas"
 
 #: compose.c:255
 msgid "Sign, Encrypt"
-msgstr "Pasirašyti, Užšifruoti"
+msgstr "Pasirašyti, užšifruoti"
 
 #: compose.c:260
 msgid "Encrypt"
@@ -795,12 +775,11 @@ msgstr "Pasirašyti"
 
 #: compose.c:271
 msgid "None"
-msgstr ""
+msgstr "Jokio"
 
 #: compose.c:280
-#, fuzzy
 msgid " (inline PGP)"
-msgstr "(tęsti)\n"
+msgstr ""
 
 #: compose.c:282
 msgid " (PGP/MIME)"
@@ -819,9 +798,8 @@ msgid "<default>"
 msgstr "<įprastas>"
 
 #: compose.c:318
-#, fuzzy
 msgid "Encrypt with: "
-msgstr "Užšifruoti"
+msgstr "Užšifruoti "
 
 #: compose.c:337
 msgid "<no chain defined>"
@@ -869,14 +847,13 @@ msgid "Open mailbox to attach message from"
 msgstr "Atidaryti dėžutę, iš kurios prisegti laišką"
 
 #: compose.c:1074
-#, fuzzy
 msgid "Open newsgroup to attach message from"
-msgstr "Atidaryti dėžutę, iš kurios prisegti laišką"
+msgstr "Atidaryti naujienų grupę, iš kurios prisegti laišką"
 
 #: compose.c:1118
-#, fuzzy, c-format
+#, c-format
 msgid "Unable to open mailbox %s"
-msgstr "Negaliu užrakinti dėžutės!"
+msgstr "Negaliu atidaryti dėžutės %s"
 
 #: compose.c:1126
 msgid "No messages in that folder."
@@ -911,24 +888,23 @@ msgid "Save a copy of this message?"
 msgstr "Išsaugoti šio laiško kopiją?"
 
 #: compose.c:1360
-#, fuzzy
 msgid "Send attachment with name: "
-msgstr "žiūrėti priedą kaip tekstą"
+msgstr "Siųsti priedą vardu: "
 
 #: compose.c:1377
 msgid "Rename to: "
-msgstr "Pervadinti į:"
+msgstr "Pervadinti į: "
 
 #. L10N:
 #. "stat" is a system call. Do "man 2 stat" for more information.
 #: compose.c:1384 editmsg.c:104 editmsg.c:126 sendlib.c:913
-#, fuzzy, c-format
+#, c-format
 msgid "Can't stat %s: %s"
-msgstr "Negalėjau stat'inti: %s"
+msgstr "Negalėjau stat'inti %s: %s"
 
 #: compose.c:1410
 msgid "New file: "
-msgstr "Nauja byla:"
+msgstr "Nauja byla: "
 
 #: compose.c:1422
 msgid "Content-Type is of the form base/sub"
@@ -1044,9 +1020,8 @@ msgid "[-- %s output follows%s --]\n"
 msgstr "[-- Toliau PGP išvestis (esamas laikas: %c) --]\n"
 
 #: ncrypt/crypt.c:93
-#, fuzzy
 msgid "Passphrase(s) forgotten."
-msgstr "PGP slapta frazė pamiršta."
+msgstr "Slapta frazė pamiršta."
 
 #: ncrypt/crypt.c:155
 msgid "Inline PGP can't be used with attachments.  Revert to PGP/MIME?"
@@ -1116,7 +1091,6 @@ msgstr ""
 "\n"
 
 #: ncrypt/crypt.c:1031
-#, fuzzy
 msgid ""
 "[-- The following data is signed --]\n"
 "\n"
@@ -1133,7 +1107,6 @@ msgstr ""
 "\n"
 
 #: ncrypt/crypt.c:1042
-#, fuzzy
 msgid ""
 "\n"
 "[-- End of signed data --]\n"
@@ -1146,7 +1119,6 @@ msgid "\"crypt_use_gpgme\" set but not built with GPGME support."
 msgstr ""
 
 #: ncrypt/cryptglue.c:126
-#, fuzzy
 msgid "Invoking S/MIME..."
 msgstr "Kviečiu S/MIME..."
 
@@ -1191,9 +1163,8 @@ msgid "Function not permitted in attach-message mode."
 msgstr "Funkcija neleistina laiško prisegimo režime."
 
 #: curs_main.c:87
-#, fuzzy
 msgid "No visible messages."
-msgstr "Nėra naujų laiškų"
+msgstr "Nėra matomų laiškų."
 
 #. L10N: %s is one of the CHECK_ACL entries below.
 #: curs_main.c:132 pager.c:114
@@ -1256,23 +1227,20 @@ msgid "New mail in this mailbox."
 msgstr "Naujas paštas šioje dėžutėje."
 
 #: curs_main.c:1026
-#, fuzzy
 msgid "Mailbox was externally modified."
-msgstr "Dėžutė buvo išoriškai pakeista.  Flagai gali būti neteisingi."
+msgstr "Pašto dėžutė buvo išoriškai pakeista."
 
 #: curs_main.c:1147
 msgid "No tagged messages."
 msgstr "Nėra pažymėtų laiškų."
 
 #: curs_main.c:1151 menu.c:1157
-#, fuzzy
 msgid "Nothing to do."
-msgstr "Jungiuosi prie %s..."
+msgstr "Nėra, ką daryti."
 
 #: curs_main.c:1249
-#, fuzzy
 msgid "Enter Message-Id: "
-msgstr "Įvesk rakto ID, skirtą %s: "
+msgstr "Įvesk žinutės ID: "
 
 #: curs_main.c:1257
 msgid "Article has no parent reference."
